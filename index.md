@@ -1,6 +1,6 @@
 ![](https://github.com/ics-software-engineering/meteor-application-template-react/raw/main/doc/landing-page.png)
 
-meteor-application-template-react is a sample Meteor 2.7.1 application that illustrates: 
+meteor-application-template-react is a sample Meteor 2.7.3 application that illustrates: 
 
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
   * [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
@@ -10,21 +10,16 @@ meteor-application-template-react is a sample Meteor 2.7.1 application that illu
   * Initialization of users and data from a settings file.
   * Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
   * Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
+  * Unit and integration testing using [Meteor test](https://guide.meteor.com/testing.html).
+  * Acceptance testing using [TestCafe](https://testcafe.io/).
 
 The goal of this template is to help you get quickly started doing Meteor development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and collection manipulation.
-
-To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
-
-  * Unit Testing.
-  * Security (meteor-application-template-react enables the insecure packages)
-
-Examples of the these capabilities will be provided elsewhere.
 
 ## Installation
 
 First, [install Meteor](https://www.meteor.com/install).
 
-Second, go to [https://github.com/ics-software-engineering/meteor-application-template-react](https://github.com/ics-software-engineering/meteor-application-template-react), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
+Second, go to [https://github.com/ics-software-engineering/meteor-application-template-production](https://github.com/ics-software-engineering/meteor-application-template-production), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
 
 Third, go to your newly created repository, and click the "Clone or download" button to download your new GitHub repo to your local file system.  Using [GitHub Desktop](https://desktop.github.com/) is a great choice if you use MacOS or Windows.
 
