@@ -46,8 +46,8 @@ test('Test that user pages show up', async () => {
 
 test('Test that sign up and sign out work', async () => {
   await navBar.gotoSignUpPage();
+  await signUpPage.isDisplayed();
   await signUpPage.signupUser(newCredentials.username, newCredentials.password);
-  await signInPage.signin(newCredentials.username, newCredentials.password);
   await navBar.isLoggedIn(newCredentials.username);
   await navBar.logout();
   await signOutPage.isDisplayed();

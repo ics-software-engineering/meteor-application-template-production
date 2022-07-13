@@ -10,13 +10,11 @@ class SignUpPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed() {
-    const waitTime = 15;
-    await t.wait(waitTime * 1000).expect(this.pageSelector.exists).ok();
+    await t.expect(this.pageSelector.exists).ok();
   }
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
   async signupUser(username, password) {
-    await this.isDisplayed();
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_FIRST_NAME}`, 'Jane');
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_LAST_NAME}`, 'Doe');
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_EMAIL}`, username);
