@@ -273,6 +273,166 @@ ESLint should run without generating any errors.
 
 It's significantly easier to do development with ESLint integrated directly into your IDE (such as IntelliJ).
 
+#### Unit testing
+
+The [package.json](https://github.com/ics-software-engineering/meteor-application-template-production/blob/main/app/package.json) file has a script called `test-unit`. This script uses the `meteor test` command. It searches for `*.test.js` files to run. These files are associated with the Collections. An example of the unit test follows:
+```shell
+meteor npm run test-unit
+
+> meteor-application-template-react@ test-unit /Users/carletonmoore/GitHub/ICS414/meteor-application-template-production/app
+> cross-env TEST_BROWSER_DRIVER=puppeteer MOCHA_TIMEOUT=150000 meteor test --exclude-archs web.browser.legacy,web.cordova --no-release-check --once --driver-package meteortesting:mocha --port 3100
+
+[[[[[ Tests ]]]]]                             
+
+=> Started proxy.                             
+=> Started HMR server.                        
+=> Started MongoDB.                           
+I20220713-10:33:55.520(-10)?                  
+I20220713-10:33:55.530(-10)? --------------------------------
+I20220713-10:33:55.530(-10)? ----- RUNNING SERVER TESTS -----
+I20220713-10:33:55.530(-10)? --------------------------------
+I20220713-10:33:55.531(-10)? 
+I20220713-10:33:55.531(-10)? 
+I20220713-10:33:55.531(-10)? 
+I20220713-10:33:55.531(-10)?   StuffCollection
+I20220713-10:33:55.544(-10)? Monti APM: completed instrumenting the app
+=> Started your app.
+
+=> App running at: http://localhost:3100/
+I20220713-10:33:55.941(-10)?     ✓ Can define and removeIt (407ms)
+I20220713-10:33:55.942(-10)?     ✓ Can define duplicates
+I20220713-10:33:56.043(-10)?     ✓ Can update (101ms)
+I20220713-10:33:56.047(-10)?     ✓ Can dumpOne, removeIt, and restoreOne
+I20220713-10:33:56.048(-10)? 
+I20220713-10:33:56.049(-10)?   AdminProfileCollection
+I20220713-10:33:56.133(-10)? Defining ADMIN Alayna.Rath98@yahoo.com with password changeme
+  [ SNIP... ]
+I20220713-10:34:02.619(-10)? Defining ADMIN Kendrick63@gmail.com with password changeme
+I20220713-10:34:02.682(-10)?     ✓ Can define and removeIt (6633ms)
+I20220713-10:34:02.683(-10)? Defining ADMIN Quinton55@hotmail.com with password changeme
+I20220713-10:34:02.744(-10)?     ✓ Cannot define duplicates (62ms)
+I20220713-10:34:02.745(-10)? Defining ADMIN Peyton.Kreiger@yahoo.com with password M0IA1WkjBAiw0xc
+I20220713-10:34:02.892(-10)?     ✓ Can update (148ms)
+I20220713-10:34:02.893(-10)? 
+I20220713-10:34:02.893(-10)?   UserProfileCollection
+I20220713-10:34:02.895(-10)? Defining USER Everett87@hotmail.com with password changeme
+  [ SNIP... ]
+I20220713-10:34:09.321(-10)? Defining USER Chase.Kuphal@hotmail.com with password changeme
+I20220713-10:34:09.385(-10)?     ✓ Can define and removeIt (6490ms)
+I20220713-10:34:09.385(-10)? Defining USER Zachary_McClure@hotmail.com with password changeme
+I20220713-10:34:09.446(-10)?     ✓ Cannot define duplicates (62ms)
+I20220713-10:34:09.447(-10)? Defining USER Jovan37@gmail.com with password HTBrtI65Hz6y6a2
+I20220713-10:34:09.591(-10)?     ✓ Can update (144ms)
+I20220713-10:34:09.591(-10)? 
+I20220713-10:34:09.592(-10)? 
+I20220713-10:34:09.592(-10)?   10 passing (14s)
+I20220713-10:34:09.592(-10)? 
+I20220713-10:34:09.592(-10)? 
+I20220713-10:34:09.592(-10)? --------------------------------
+I20220713-10:34:09.592(-10)? ----- RUNNING CLIENT TESTS -----
+I20220713-10:34:09.592(-10)? --------------------------------
+I20220713-10:34:09.864(-10)? HeadlessChrome/104.0.5109.0
+W20220713-10:34:10.867(-10)? (STDERR) UNKNOWN CONSOLE TYPE: warn
+W20220713-10:34:10.867(-10)? (STDERR) HMR: connected
+W20220713-10:34:10.871(-10)? (STDERR) UNKNOWN CONSOLE TYPE: warn
+W20220713-10:34:10.871(-10)? (STDERR)   0 passing (0ms)
+I20220713-10:34:10.909(-10)? All tests finished!
+I20220713-10:34:10.909(-10)? 
+I20220713-10:34:10.909(-10)? --------------------------------
+I20220713-10:34:10.909(-10)? SERVER FAILURES: 0
+I20220713-10:34:10.909(-10)? CLIENT FAILURES: 0
+I20220713-10:34:10.909(-10)? --------------------------------
+⋊> ~/G/I/m/app on main ⨯             
+```
+
+#### Integration testing
+
+The [package.json](https://github.com/ics-software-engineering/meteor-application-template-production/blob/main/app/package.json) file has a script called `test-integration`. This script uses the `meteor test --full-app --once` command. This `meteor test` looks for files `*.app-test.js`. In `meteor-application-template-production we are testing the Meteor methods. For example, the [StuffCollection.methods.app-test.js](https://github.com/ics-software-engineering/meteor-application-template-production/blob/main/app/imports/api/stuff/SuffCollection.methods.app-test.js) tests the define, update, and removeIt methods. Here's an example run:
+
+```shell
+% meteor npm run test-integration
+
+> meteor-application-template-react@ test-integration /Users/carletonmoore/GitHub/ICS414/meteor-application-template-production/app
+> cross-env METEOR_NO_RELEASE_CHECK=1 TEST_BROWSER_DRIVER=puppeteer meteor test --full-app --once --driver-package meteortesting:mocha --port 3100
+
+[[[[[ Tests ]]]]]                             
+
+=> Started proxy.                             
+=> Started HMR server.                        
+=> Started MongoDB.                           
+I20220713-10:49:00.149(-10)? Cannot initialize the database!  Please invoke meteor with a settings file.
+I20220713-10:49:00.314(-10)? 
+I20220713-10:49:00.315(-10)? --------------------------------
+I20220713-10:49:00.315(-10)? --- RUNNING APP SERVER TESTS ---
+I20220713-10:49:00.315(-10)? --------------------------------
+I20220713-10:49:00.315(-10)? 
+I20220713-10:49:00.316(-10)? 
+I20220713-10:49:00.317(-10)? 
+I20220713-10:49:00.317(-10)?   0 passing (0ms)
+I20220713-10:49:00.317(-10)? 
+I20220713-10:49:00.317(-10)? 
+I20220713-10:49:00.317(-10)? --------------------------------
+I20220713-10:49:00.317(-10)? --- RUNNING APP CLIENT TESTS ---
+I20220713-10:49:00.317(-10)? --------------------------------
+I20220713-10:49:00.402(-10)? Monti APM: completed instrumenting the app
+=> Started your app.
+
+=> App running at: http://localhost:3100/
+I20220713-10:49:00.706(-10)? HeadlessChrome/104.0.5109.0
+W20220713-10:49:01.574(-10)? (STDERR) Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+W20220713-10:49:02.092(-10)? (STDERR) HMR: connected
+W20220713-10:49:02.143(-10)? (STDERR) 
+W20220713-10:49:02.144(-10)? (STDERR)   StuffCollection Meteor Methods
+W20220713-10:49:02.670(-10)? (STDERR)     ✓ Can define, update, and removeIt (525ms)
+W20220713-10:49:02.671(-10)? (STDERR)   AdminProfileCollection Meteor Methods
+I20220713-10:49:03.105(-10)? Defining ADMIN Priscilla.Prosacco19@gmail.com with password changeme
+W20220713-10:49:03.190(-10)? (STDERR)     ✓ Can define, update, and removeIt (519ms)
+W20220713-10:49:03.192(-10)? (STDERR)   UserProfileCollection Meteor Methods
+I20220713-10:49:03.538(-10)? Defining USER Rowena.Boyer@gmail.com with password changeme
+W20220713-10:49:03.715(-10)? (STDERR)     ✓ Can define, update, and removeIt (522ms)
+W20220713-10:49:03.716(-10)? (STDERR)   3 passing (2s)
+I20220713-10:49:03.757(-10)? All tests finished!
+I20220713-10:49:03.757(-10)? 
+I20220713-10:49:03.758(-10)? --------------------------------
+I20220713-10:49:03.758(-10)? APP SERVER FAILURES: 0
+I20220713-10:49:03.758(-10)? APP CLIENT FAILURES: 0
+I20220713-10:49:03.758(-10)? --------------------------------
+%    
+```
+
+#### Acceptance testing
+
+`meteor-application-template-production` uses [TestCafe](https://testcafe.io/) for acceptance testing. The [package.json](https://github.com/ics-software-engineering/meteor-application-template-production/blob/main/app/package.json) file has three scripts for acceptance testing,
+
+1. `test-acceptance-development` This script runs all the acceptance test against a running development system.
+2. `test-acceptance-development-single` This script runs a single acceptance test against a running development system.
+3. `test-acceptance-ci` This script runs all the acceptance test durning continuous integration.
+
+In the development acceptance tests, TestCafe opens a browser and you can watch the tests.
+
+Here's an example run of the `test-acceptance-development` script:
+```shell
+% meteor npm run test-acceptance-development
+
+> meteor-application-template-react@ test-acceptance-development /Users/carletonmoore/GitHub/ICS414/meteor-application-template-production/app
+> testcafe chrome tests/*.testcafe.js
+
+ Running tests in:
+ - Chrome 103.0.5060.114 / macOS 10.15.7
+
+ meteor-application-template-production localhost test with default db
+Waiting 15 seconds before running LandingPage.isDisplayed().
+ ✓ Test that landing page shows up
+ ✓ Test that signin and signout work
+ ✓ Test that user pages show up
+ ✓ Test that sign up and sign out work
+ ✓ Test that admin pages show up
+
+
+ 5 passed (30s)
+%
+```
+
 ## Screencasts
 
 For more information about this system, please watch one or more of the following screencasts. Note that the current source code might differ slightly from the code in these screencasts, but the changes should be very minor.
