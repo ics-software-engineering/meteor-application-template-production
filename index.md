@@ -215,11 +215,25 @@ The Stuffs collection is initialized in [imports/startup/server/Mongo.js](https:
 The application uses the [React implementation of Bootstrap 5](https://react-bootstrap.github.io/). You can adjust the theme by editing the `app/client/style.css` file. To change the theme override the Bootstrap 5 CSS variables.
 
 ```css
+/* Use Open Sans as the default sans serif font. */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+
+/* Set up some CSS variables to theme the application. */
+:root {
+  --matr-navbar-bg: #ECECEC;
+  --matr-navbar-bg-rgb: 236, 236, 236;
+}
+
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-light-rgb: 236, 236, 236;
+  --bs-light-rgb: var(--matr-navbar-bg-rgb);
+}
+
+/* Set the SignIn and SignUp alerts background. */
+#signin-page .alert-light, #signup-page .alert-light {
+  --bs-alert-bg: var(--matr-navbar-bg);
 }
 
 /* Define custom styles */
