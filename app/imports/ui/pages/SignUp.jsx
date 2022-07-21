@@ -53,7 +53,7 @@ const SignUp = () => {
     return <Navigate to="/add" />;
   }
   return (
-    <Container id={PAGE_IDS.SIGN_UP}>
+    <Container id={PAGE_IDS.SIGN_UP} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">

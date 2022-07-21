@@ -22,7 +22,7 @@ const ListStuffAdmin = () => {
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.LIST_STUFF_ADMIN}>
+    <Container id={PAGE_IDS.LIST_STUFF_ADMIN} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>

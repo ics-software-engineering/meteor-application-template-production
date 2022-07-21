@@ -43,7 +43,7 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <Container id={PAGE_IDS.SIGN_IN}>
+    <Container id={PAGE_IDS.SIGN_IN} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">

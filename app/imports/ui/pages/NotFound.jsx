@@ -4,7 +4,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Render a Not Found page if the user enters a URL that doesn't match any route. */
 const NotFound = () => (
-  <Container id={PAGE_IDS.NOT_FOUND}>
+  <Container id={PAGE_IDS.NOT_FOUND} className="py-3">
     <Row className="justify-content-center">
       <Col xs={4} className="text-center">
         <h2>

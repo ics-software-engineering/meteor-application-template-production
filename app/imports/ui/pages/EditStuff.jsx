@@ -41,7 +41,7 @@ const EditStuff = () => {
   };
 
   return ready ? (
-    <Container id={PAGE_IDS.EDIT_STUFF}>
+    <Container id={PAGE_IDS.EDIT_STUFF} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Edit Stuff</h2></Col>
