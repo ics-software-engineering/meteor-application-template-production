@@ -47,6 +47,7 @@
     "test-integration": "cross-env METEOR_NO_RELEASE_CHECK=1 TEST_BROWSER_DRIVER=puppeteer meteor test --full-app --once --driver-package meteortesting:mocha --port 3100",
     "test-acceptance-development": "testcafe chrome tests/*.testcafe.js",
     "test-acceptance-development-single": "testcafe chrome tests/*.testcafe.js -t \"Test that sign up and sign out work\"",
-    "test-acceptance-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\""
+    "test-acceptance-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\"",
+    "test-all": "meteor reset && meteor npm run lint && meteor npm run test-unit && meteor npm run test-integration && meteor npm run test-acceptance-ci"
   }
 }
