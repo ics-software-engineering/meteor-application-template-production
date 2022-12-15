@@ -15,6 +15,7 @@ import { AdminProfiles } from './AdminProfileCollection';
 if (Meteor.isClient) {
   describe('AdminProfileCollection Meteor Methods', function testSuite() {
     it('Can define, update, and removeIt', async function test1() {
+      // this.timeout(15000);
       const { username, password } = await defineTestAdminUser.callPromise();
       await withLoggedInUser({ username, password });
       await withSubscriptions();

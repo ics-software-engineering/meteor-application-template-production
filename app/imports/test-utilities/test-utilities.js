@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
-import { DDP } from 'meteor/ddp-client';
 import faker from 'faker';
 import { Accounts } from 'meteor/accounts-base';
+import { Promise } from 'meteor/promise';
 import { Roles } from 'meteor/alanning:roles';
 import { CallPromiseMixin } from 'meteor/didericis:callpromise-mixin';
 import { Stuffs } from '../api/stuff/StuffCollection';
@@ -13,11 +13,12 @@ import { UserProfiles } from '../api/user/UserProfileCollection';
 export function withSubscriptions() {
   return new Promise((resolve => {
     // Add the collections to subscribe to.
-    AdminProfiles.subscribe();
-    Stuffs.subscribeStuff();
-    UserProfiles.subscribe();
+    const sub1 = AdminProfiles.subscribe();
+    const sub2 = Stuffs.subscribeStuff();
+    const sub3 = UserProfiles.subscribe();
     const poll = Meteor.setInterval(() => {
-      if (DDP._allSubscriptionsReady()) {
+      const ready = sub1.ready() && sub2.ready() && sub3.ready();
+      if (ready) {
         Meteor.clearInterval(poll);
         resolve();
       }
