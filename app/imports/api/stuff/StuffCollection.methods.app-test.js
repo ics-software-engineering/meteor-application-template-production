@@ -11,8 +11,6 @@ import { defineMethod, updateMethod, removeItMethod } from '../base/BaseCollecti
 if (Meteor.isClient) {
   describe('StuffCollection Meteor Methods', function testSuite() {
     it('Can define, update, and removeIt', async function test1() {
-      // this.timeout(15000);
-      console.log('start test');
       const { username, password } = await defineTestUser.callPromise();
       await withLoggedInUser({ username, password });
       await withSubscriptions();
