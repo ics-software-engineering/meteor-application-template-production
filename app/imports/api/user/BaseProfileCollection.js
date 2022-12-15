@@ -16,7 +16,7 @@ class BaseProfileCollection extends BaseCollection {
       firstName: String,
       lastName: String,
       role: String,
-      userID: SimpleSchema.RegEx.Id,
+      userID: /^[23456789ABCDEFGHJKLMNPQRSTWXYZabcdefghijkmnopqrstuvwxyz]{17}$/,
     })));
   }
 

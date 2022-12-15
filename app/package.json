@@ -15,7 +15,7 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.4.5",
     "react-router-dom": "^6.4.5",
-    "simpl-schema": "^1.13.1",
+    "simpl-schema": "^3.4.0",
     "sweetalert": "^2.1.2",
     "uniforms": "^3.10.1",
     "uniforms-bootstrap5": "^3.10.1",
