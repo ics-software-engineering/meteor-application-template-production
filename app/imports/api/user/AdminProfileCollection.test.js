@@ -51,12 +51,16 @@ if (Meteor.isServer) {
       const password = faker.internet.password();
       const docID = AdminProfiles.define({ email, firstName, lastName, password });
       fc.assert(
-        fc.property(fc.lorem(1), fc.lorem(1), (fName, lName) => {
-          AdminProfiles.update(docID, { firstName: fName, lastName: lName });
-          const admin = AdminProfiles.findDoc(docID);
-          expect(admin.firstName).to.equal(fName);
-          expect(admin.lastName).to.equal(lName);
-        }),
+        fc.property(
+          fc.lorem({ maxCount: 1 }),
+          fc.lorem({ maxCount: 1 }),
+          (fName, lName) => {
+            AdminProfiles.update(docID, { firstName: fName, lastName: lName });
+            const admin = AdminProfiles.findDoc(docID);
+            expect(admin.firstName).to.equal(fName);
+            expect(admin.lastName).to.equal(lName);
+          },
+        ),
       );
       done();
     });
