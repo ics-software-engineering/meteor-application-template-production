@@ -4,12 +4,18 @@ import faker from 'faker';
 import fc from 'fast-check';
 import { removeAllEntities } from '../base/BaseUtilities';
 import { UserProfiles } from './UserProfileCollection';
+import { MATPCollections } from '../matp/MATPCollections';
+import { testDefine, testUpdate } from '../utilities/test-helpers';
 
 /* eslint prefer-arrow-callback: "off",  no-unused-expressions: "off" */
 /* eslint-env mocha */
 
+const collectionName = UserProfiles.getCollectionName();
+
 if (Meteor.isServer) {
-  describe('UserProfileCollection', function testSuite() {
+  describe(collectionName, function testSuite() {
+    const collection = MATPCollections.getCollection(collectionName);
+
     before(function setup() {
       removeAllEntities();
     });
@@ -25,10 +31,8 @@ if (Meteor.isServer) {
           fc.lorem({ maxCount: 1 }),
           (firstName, lastName) => {
             const email = faker.internet.email();
-            const docID = UserProfiles.define({ email, firstName, lastName });
-            expect(UserProfiles.isDefined(docID)).to.be.true;
-            UserProfiles.removeIt(docID);
-            expect(UserProfiles.isDefined(docID)).to.be.false;
+            const definitionData = { email, firstName, lastName };
+            testDefine(collection, definitionData);
           },
         ),
       );
@@ -39,8 +43,8 @@ if (Meteor.isServer) {
       const email = faker.internet.email();
       const firstName = faker.name.firstName();
       const lastName = faker.name.lastName();
-      const docID1 = UserProfiles.define({ email, firstName, lastName });
-      const docID2 = UserProfiles.define({ email, firstName, lastName });
+      const docID1 = collection.define({ email, firstName, lastName });
+      const docID2 = collection.define({ email, firstName, lastName });
       expect(docID1).to.equal(docID2);
     });
 
@@ -49,21 +53,18 @@ if (Meteor.isServer) {
       const firstName = faker.name.firstName();
       const lastName = faker.name.lastName();
       const password = faker.internet.password();
-      const docID = UserProfiles.define({ email, firstName, lastName, password });
+      const docID = collection.define({ email, firstName, lastName, password });
       fc.assert(
         fc.property(
           fc.lorem({ maxCount: 1 }),
           fc.lorem({ maxCount: 1 }),
           (fName, lName) => {
-            UserProfiles.update(docID, { firstName: fName, lastName: lName });
-            const user = UserProfiles.findDoc(docID);
-            expect(user.firstName).to.equal(fName);
-            expect(user.lastName).to.equal(lName);
+            const updateData = { firstName: fName, lastName: lName };
+            testUpdate(collection, docID, updateData);
           },
         ),
       );
       done();
     });
-
   });
 }

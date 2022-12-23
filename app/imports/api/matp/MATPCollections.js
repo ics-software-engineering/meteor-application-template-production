@@ -11,7 +11,7 @@ class MATPClass {
   collectionAssociation;
 
   constructor() {
-    // list of all the MATP collections
+    // list of all the MATPCollections collections
     this.collections = [
       AdminProfiles,
       Stuffs,
@@ -43,13 +43,13 @@ class MATPClass {
    * @throws { Meteor.Error } If collectionName does not name a collection.
    */
   getCollection(collectionName) {
-    // console.log('MATP', collectionName, this.collectionAssociation);
+    // console.log('MATPCollections', collectionName, this.collectionAssociation);
     const collection = this.collectionAssociation[collectionName];
     if (!collection) {
-      throw new Meteor.Error(`Called MARTP.getCollection with unknown collection name: ${collectionName}`);
+      throw new Meteor.Error(`Called MARTPCollections.getCollection with unknown collection name: ${collectionName}`);
     }
     return collection;
   }
 }
 
-export const MATP = new MATPClass();
+export const MATPCollections = new MATPClass();

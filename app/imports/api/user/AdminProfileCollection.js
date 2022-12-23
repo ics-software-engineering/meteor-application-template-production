@@ -99,7 +99,7 @@ class AdminProfileCollection extends BaseProfileCollection {
     const email = doc.email;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    return { email, firstName, lastName };
+    return { email, firstName, lastName }; // CAM this is not enough for the define method. We lose the password.
   }
 }
 
