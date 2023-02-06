@@ -27,7 +27,6 @@ const App = () => {
       ready: rdy,
     };
   });
-  console.log(`App Roles ${ready}`);
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
