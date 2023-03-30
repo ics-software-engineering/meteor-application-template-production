@@ -12,6 +12,6 @@ function addData(data) {
 if (Stuffs.count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
+    Meteor.settings.defaultData.forEach(data => addData(data));
   }
 }
