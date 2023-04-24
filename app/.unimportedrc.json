@@ -12,6 +12,7 @@
     "meteor/meteor",
     "meteor/mongo",
     "meteor/react-meteor-data",
+    "meteor/udondan:zipzap",
     "meteor/underscore"
   ],
   "ignoreUnused": [
@@ -41,7 +42,7 @@
   ],
   "ignoreUnimported": [
     "imports/api/base/BaseUtilities.js",
-    "imports/test-utilities/test-utilities.js",
-    "imports/api/utilities/test-helpers.js"
+    "imports/api/utilities/test-helpers.js",
+    "imports/test-utilities/test-utilities.js"
   ]
 }
